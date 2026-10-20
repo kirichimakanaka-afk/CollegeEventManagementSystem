@@ -1,0 +1,239 @@
+import { useState } from 'react'
+import '../App.css';
+
+function App() {
+  // Events matching the database records
+  const [events] = useState([
+    {
+      id: 1,
+      title: 'Hackathon 2026',
+      description: '24-hour coding competition',
+      venue: 'Main Auditorium',
+      event_date: '2026-11-10 09:00:00',
+      capacity: 100,
+      created_by: 1,
+    },
+    {
+      id: 2,
+      title: 'Career Fair',
+      description: 'Meet recruiters and alumni',
+      venue: 'Sports Hall',
+      event_date: '2026-11-20 10:00:00',
+      capacity: 300,
+      created_by: 1,
+    },
+    {
+      id: 3,
+      title: 'Cultural Day',
+      description: 'Music, food and performances',
+      venue: 'Campus Grounds',
+      event_date: '2026-12-05 12:00:00',
+      capacity: 500,
+      created_by: 1,
+    },
+    {
+      id: 4,
+      title: 'Cyber Security Workshop',
+      description: 'Hands-on ethical hacking',
+      venue: 'Lab 3',
+      event_date: '2026-11-15 14:00:00',
+      capacity: 40,
+      created_by: 1,
+    },
+  ])
+
+  const [search, setSearch] = useState('')
+  const [registered, setRegistered] = useState([])
+
+  // Search events by title, description or venue
+  const filteredEvents = events.filter((event) =>
+    `${event.title} ${event.description} ${event.venue}`
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  )
+
+  // Register or unregister for an event
+  function handleRegistration(eventId) {
+    if (registered.includes(eventId)) {
+      setRegistered(registered.filter((id) => id !== eventId))
+    } else {
+      setRegistered([...registered, eventId])
+    }
+  }
+
+  // Format the event date
+  function formatDate(dateString) {
+    const date = new Date(dateString.replace(' ', 'T'))
+
+    return date.toLocaleString('en-IN', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+  }
+
+  return (
+    <div className="app">
+      <header className="header">
+        <div className="brand">
+          <span className="brand-icon">🎓</span>
+          <div>
+            <h1>CampusConnect</h1>
+            <p>College Event Management System</p>
+          </div>
+        </div>
+
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#events">Events</a>
+          <a href="#about">About</a>
+        </nav>
+      </header>
+
+      <main>
+        <section className="hero" id="home">
+          <div className="hero-content">
+            <span className="tag">YOUR CAMPUS, YOUR EXPERIENCE</span>
+            <h2>
+              Discover Events.
+              <br />
+              Create Memories.
+            </h2>
+            <p>
+              Explore campus activities, connect with fellow students,
+              and never miss an exciting college event.
+            </p>
+
+            <a className="hero-button" href="#events">
+              Explore Events →
+            </a>
+          </div>
+        </section>
+
+        <section className="events-section" id="events">
+          <div className="section-heading">
+            <div>
+              <span className="tag">WHAT'S HAPPENING</span>
+              <h2>Upcoming Events</h2>
+              <p>Find an event that matches your interests.</p>
+            </div>
+
+            <div className="event-count">
+              <strong>{filteredEvents.length}</strong>
+              <span>Events found</span>
+            </div>
+          </div>
+
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Search by event name, description or venue..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <div className="event-grid">
+            {filteredEvents.map((event) => (
+              <article className="event-card" key={event.id}>
+                <div className={`event-banner event-${event.id}`}>
+                  <span className="event-number">
+                    EVENT {String(event.id).padStart(2, '0')}
+                  </span>
+
+                  <span className="event-emoji">
+                    {event.id === 1 && '💻'}
+                    {event.id === 2 && '🤝'}
+                    {event.id === 3 && '🎭'}
+                    {event.id === 4 && '🔐'}
+                  </span>
+                </div>
+
+                <div className="event-details">
+                  <span className="event-category">
+                    {event.id === 1 && 'TECHNOLOGY'}
+                    {event.id === 2 && 'CAREER'}
+                    {event.id === 3 && 'CULTURE'}
+                    {event.id === 4 && 'WORKSHOP'}
+                  </span>
+
+                  <h3>{event.title}</h3>
+                  <p className="description">{event.description}</p>
+
+                  <div className="event-info">
+                    <p>
+                      <span>📅</span>
+                      {formatDate(event.event_date)}
+                    </p>
+                    <p>
+                      <span>📍</span>
+                      {event.venue}
+                    </p>
+                    <p>
+                      <span>👥</span>
+                      Capacity: {event.capacity} people
+                    </p>
+                  </div>
+
+                  <button
+                    className={
+                      registered.includes(event.id)
+                        ? 'register-button registered'
+                        : 'register-button'
+                    }
+                    onClick={() => handleRegistration(event.id)}
+                  >
+                    {registered.includes(event.id)
+                      ? '✓ Registered (Demo)'
+                      : 'Register Now →'}
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {filteredEvents.length === 0 && (
+            <div className="no-events">
+              <h3>No events found</h3>
+              <p>Try searching with another keyword.</p>
+            </div>
+          )}
+        </section>
+
+        <section className="about-section" id="about">
+          <h2>Make the Most of Campus Life</h2>
+          <p>
+            CampusConnect brings college events together in one place.
+            Discover opportunities to learn, network, compete and celebrate.
+          </p>
+
+          <div className="about-stats">
+            <div>
+              <strong>{events.length}</strong>
+              <span>Listed Events</span>
+            </div>
+            <div>
+              <strong>
+                {events.reduce((total, event) => total + event.capacity, 0)}
+              </strong>
+              <span>Total Event Capacity</span>
+            </div>
+            <div>
+              <strong>{registered.length}</strong>
+              <span>Demo Registrations</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer">
+        <h3>CampusConnect 🎓</h3>
+        <p>College Event Management System</p>
+        <p>© 2026 CampusConnect. All rights reserved.</p>
+      </footer>
+    </div>
+  )
+}
+
+export default App ;

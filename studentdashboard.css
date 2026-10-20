@@ -1,0 +1,264 @@
+/* Student Dashboard */
+.student-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #1e293b;
+  font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.student-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  padding: 28px 18px;
+  box-sizing: border-box;
+  background: #142b4a;
+  color: white;
+}
+
+.student-sidebar h2 {
+  font-size: 21px;
+  margin: 0 0 30px;
+}
+
+.student-sidebar p {
+  color: #a9bad0;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.student-sidebar a {
+  display: block;
+  padding: 13px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+.student-sidebar a:hover {
+  background: #25466f;
+  color: white;
+}
+
+/* Main content */
+.student-main {
+  flex: 1;
+  min-width: 0;
+  padding: 32px;
+}
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.student-header h1 {
+  margin: 0 0 8px;
+  color: #142b4a;
+  font-size: 28px;
+}
+
+.student-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.student-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Welcome section */
+.student-welcome {
+  padding: 30px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+  color: white;
+}
+
+.student-welcome h2 {
+  margin-top: 0;
+  font-size: 25px;
+}
+
+.student-welcome p {
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.student-browse-button {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: white;
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.student-browse-button:hover {
+  background: #eaf1ff;
+}
+
+/* Student statistics */
+.student-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.student-card {
+  padding: 23px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+.student-card > span {
+  font-size: 27px;
+}
+
+.student-card h3 {
+  margin: 15px 0 8px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.student-card p {
+  margin: 0;
+  color: #142b4a;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* Registered events panel */
+.student-panel {
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: white;
+}
+
+.student-panel h2 {
+  margin-top: 0;
+  color: #142b4a;
+  font-size: 20px;
+}
+
+.student-empty {
+  padding: 25px 10px;
+  text-align: center;
+}
+
+.student-empty > span {
+  font-size: 42px;
+}
+
+.student-empty h3 {
+  color: #334155;
+}
+
+.student-empty p {
+  margin-bottom: 22px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.student-empty .student-browse-button {
+  background: #2563eb;
+  color: white;
+}
+
+.student-empty .student-browse-button:hover {
+  background: #1d4ed8;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .student-sidebar {
+    width: 210px;
+  }
+
+  .student-main {
+    padding: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .student-dashboard {
+    flex-direction: column;
+  }
+
+  .student-sidebar {
+    width: 100%;
+    padding: 18px;
+  }
+
+  .student-sidebar h2 {
+    margin-bottom: 18px;
+  }
+
+  .student-sidebar a {
+    display: inline-block;
+    padding: 10px;
+    margin: 0 5px 5px 0;
+    font-size: 13px;
+  }
+
+  .student-main {
+    padding: 20px 14px;
+  }
+
+  .student-header h1 {
+    font-size: 24px;
+  }
+
+  .student-welcome {
+    padding: 22px;
+  }
+
+  .student-welcome h2 {
+    font-size: 22px;
+  }
+
+  .student-stats {
+    gap: 12px;
+  }
+
+  .student-card {
+    padding: 15px;
+  }
+
+  .student-card h3 {
+    font-size: 13px;
+  }
+
+  .student-card p {
+    font-size: 25px;
+  }
+
+  .student-panel {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,130 @@
+.feedback-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: Arial, sans-serif;
+}
+
+.feedback-card {
+  width: 100%;
+  max-width: 650px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(20, 40, 80, 0.08);
+}
+
+.feedback-card h1 {
+  margin: 0 0 10px;
+  color: #172554;
+  font-size: 28px;
+}
+
+.feedback-subtitle {
+  margin-bottom: 28px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.feedback-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feedback-card label {
+  margin-top: 10px;
+  color: #24324b;
+  font-weight: 600;
+}
+
+.feedback-card select,
+.feedback-card textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1e293b;
+  font: inherit;
+}
+
+.feedback-card select:focus,
+.feedback-card textarea:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+.feedback-card textarea {
+  resize: vertical;
+}
+
+.feedback-stars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.star {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.star.active {
+  color: #f59e0b;
+}
+
+.star:focus-visible {
+  outline: 2px solid #2563eb;
+  border-radius: 4px;
+}
+
+.rating-label {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.feedback-submit {
+  margin-top: 14px;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.feedback-submit:hover {
+  background: #1d4ed8;
+}
+
+.feedback-message {
+  margin-bottom: 0;
+  color: #166534;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .feedback-page {
+    padding: 20px 12px;
+  }
+
+  .feedback-card {
+    padding: 22px 18px;
+  }
+
+  .feedback-card h1 {
+    font-size: 24px;
+  }
+}
